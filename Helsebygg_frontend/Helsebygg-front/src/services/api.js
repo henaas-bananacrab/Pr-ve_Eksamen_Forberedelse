@@ -30,6 +30,8 @@ export const avvikAPI = {
   create: (avvikData) => api.post('/avvik', avvikData),
   getByStatus: (statusId) => api.get(`/avvik/status/${statusId}`),
   updateStatus: (id, statusId) => api.put(`/avvik/${id}/status`, { statusId }),
+  getByKategori: (kategoriId) => api.get(`/avvik/kategori/${kategoriId}`),
+  getStatsByKategoriPerMonth: () => api.get('/avvik/stats-by-kategori-month'),
 };
 
 export default api;

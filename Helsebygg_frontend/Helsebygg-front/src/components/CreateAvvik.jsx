@@ -95,7 +95,7 @@ const CreateAvvik = () => {
               <option value={3}>Løst</option>
             </select>
           </div>
-
+          
           <div className="form-group">
             <label htmlFor="Prioritering_Prioritering_id">Priority:</label>
             <select

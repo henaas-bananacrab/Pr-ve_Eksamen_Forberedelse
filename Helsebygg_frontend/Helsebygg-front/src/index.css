@@ -10,6 +10,33 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  
+  /* Button Colors */
+  --btn-primary: #007bff;
+  --btn-primary-hover: #0056b3;
+  --btn-primary-disabled: #6c757d;
+  --btn-secondary: #6c757d;
+  --btn-secondary-hover: #545b62;
+  --btn-success: #28a745;
+  --btn-success-hover: #1e7e34;
+  --btn-info: #17a2b8;
+  --btn-info-hover: #138496;
+  --btn-text: white;
+  
+  /* Error Colors */
+  --error-bg: #fee;
+  --error-text: #c33;
+  --error-border: #fcc;
+  
+  /* Card Colors */
+  --card-bg: white;
+  --card-border: #e9ecef;
+  --card-text: #495057;
+  
+  /* Form Colors */
+  --input-border: #ddd;
+  --input-bg: white;
+  --input-text: #495057;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -43,6 +70,33 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    
+    /* Button Colors for Dark Mode */
+    --btn-primary: #007bff;
+    --btn-primary-hover: #0056b3;
+    --btn-primary-disabled: #4a5568;
+    --btn-secondary: #4a5568;
+    --btn-secondary-hover: #5a6578;
+    --btn-success: #28a745;
+    --btn-success-hover: #1e7e34;
+    --btn-info: #17a2b8;
+    --btn-info-hover: #138496;
+    --btn-text: white;
+    
+    /* Error Colors for Dark Mode */
+    --error-bg: #3d2a2a;
+    --error-text: #ff6b6b;
+    --error-border: #5a3a3a;
+    
+    /* Card Colors for Dark Mode */
+    --card-bg: #1f2028;
+    --card-border: #3a3c44;
+    --card-text: #d1d5db;
+    
+    /* Form Colors for Dark Mode */
+    --input-border: #4a5568;
+    --input-bg: #2d2e3f;
+    --input-text: #e5e7eb;
   }
 
   #social .button-icon {

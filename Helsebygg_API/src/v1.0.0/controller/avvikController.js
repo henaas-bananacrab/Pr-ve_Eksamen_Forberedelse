@@ -1,4 +1,4 @@
-const { getAllAvvik, getAvvikById, createAvvik, getAvvikByStatus, updateAvvikStatus } = require('../repositories/avvikRepositorie');
+const { getAllAvvik, getAvvikById, createAvvik, getAvvikByStatus, updateAvvikStatus, getAvvikByKategori, fetchMonthlyAvvik } = require('../repositories/avvikRepositorie');
 
 const getAvvik = async (req, res) => {
   try {
@@ -56,10 +56,30 @@ const updateAvvikStatusHandler = async (req, res) => {
     }
 }
 
+const getAvvikByKategoriHandler = async (req, res) => {
+    try {
+        const avvik = await getAvvikByKategori(req.params.kategoriId);
+        res.status(200).json(avvik);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const getMonthlyAvvik = async (req, res) => {
+    try {
+        const monthlyAvvik = await fetchMonthlyAvvik();
+        res.status(200).json(monthlyAvvik);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     getAvvik,
     getAvvikByIdHandler,
     createAvvikHandler,
     getAvvikByStatusHandler,
-    updateAvvikStatusHandler
+    updateAvvikStatusHandler,
+    getAvvikByKategoriHandler,
+    getMonthlyAvvik
 };

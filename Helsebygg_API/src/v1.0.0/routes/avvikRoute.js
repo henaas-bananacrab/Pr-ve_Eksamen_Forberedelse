@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getAvvik, getAvvikByIdHandler, createAvvikHandler, getAvvikByStatusHandler, updateAvvikStatusHandler } = require('../controller/avvikController');
+const { getAvvik, getAvvikByIdHandler, createAvvikHandler, getAvvikByStatusHandler, updateAvvikStatusHandler, getAvvikByKategoriHandler, getMonthlyAvvik } = require('../controller/avvikController');
 const { authenticateToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 const router = express.Router();
@@ -19,5 +19,10 @@ router.get('/avvik/status/:id', getAvvikByStatusHandler);
 
 // PUT /avvik/:id/status - Update avvik status
 router.put('/avvik/:id/status', authenticateToken, authorizeRoles('Admin'), updateAvvikStatusHandler);
+// GET /avvik/kategori/:kategoriId - Get avvik by kategori
+router.get('/avvik/kategori/:kategoriId', authenticateToken, getAvvikByKategoriHandler);
+
+// GET /avvik/monthly - Get monthly avvik statistics
+router.get('/avvik/monthly', authenticateToken, getMonthlyAvvik);
 
 module.exports = router;

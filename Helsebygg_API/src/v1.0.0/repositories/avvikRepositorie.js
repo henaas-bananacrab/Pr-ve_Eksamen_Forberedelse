@@ -71,10 +71,50 @@ const updateAvvikStatus = async (id, statusId) => {
   return result.affectedRows > 0;
 };
 
+const getAvvikByKategori = async (kategoriId) => {
+  const [rows] = await db.query(`
+    SELECT 
+      a.*,
+      s.Status,
+      p.Prioritering,
+      k.Kategori,
+      av.Avdeling
+    FROM avvik a
+    JOIN status s ON a.Status_Status_id = s.Status_id
+    JOIN prioritering p ON a.Prioritering_Prioritering_id = p.Prioritering_id
+    JOIN Kategori k ON a.Kategori_Kategori_id = k.Kategori_id
+    JOIN avdeling av ON a.Avdeling_Avdeling_id = av.Avdeling_id
+    WHERE a.Kategori_Kategori_id = ?
+  `, [kategoriId]);
+
+  return rows;
+};
+
+const fetchMonthlyAvvik = async () => {
+  const [results] = await db.query(`
+    SELECT
+      DATE_FORMAT(a.Dato, '%Y-%m') AS month,
+      k.Kategori AS Kategori,
+      COUNT(*) AS total
+    FROM avvik a
+    JOIN kategori k ON a.Kategori_Kategori_id = k.Kategori_id
+    GROUP BY
+      DATE_FORMAT(a.Dato, '%Y-%m'),
+      k.Kategori
+    ORDER BY
+      month,
+      kategori;
+  `);
+
+  return results;
+};
+
 module.exports = {
   getAllAvvik,
   getAvvikById,
   createAvvik,
   getAvvikByStatus,
-  updateAvvikStatus
+  updateAvvikStatus,
+  getAvvikByKategori,
+  fetchMonthlyAvvik
 };
