@@ -44,10 +44,13 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <h1>Helsebygg Avvik System</h1>
+        <h1>Helsebygg Avvik</h1>
         <div className="header-actions">
           <button onClick={() => navigate('/create-avvik')} className="btn-primary">
             Create New Avvik
+          </button>
+          <button onClick={() => navigate('/statistics')} className="btn-secondary">
+            View Statistics
           </button>
           <button onClick={handleLogout} className="btn-secondary">
             Logout

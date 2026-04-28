@@ -14,15 +14,10 @@ router.get('/avvik/:id', getAvvikByIdHandler);
 // POST /avvik - Create new avvik
 router.post('/avvik', createAvvikHandler);
 
-// GET /avvik/status/:id - Get avvik by status
-router.get('/avvik/status/:id', getAvvikByStatusHandler);
-
 // PUT /avvik/:id/status - Update avvik status
 router.put('/avvik/:id/status', authenticateToken, authorizeRoles('Admin'), updateAvvikStatusHandler);
-// GET /avvik/kategori/:kategoriId - Get avvik by kategori
-router.get('/avvik/kategori/:kategoriId', authenticateToken, getAvvikByKategoriHandler);
 
-// GET /avvik/monthly - Get monthly avvik statistics
-router.get('/avvik/monthly', authenticateToken, getMonthlyAvvik);
+// GET /avvik/stats/monthly - Get monthly avvik statistics
+router.get('/avvik/stats/monthly', authenticateToken, getMonthlyAvvik);
 
 module.exports = router;

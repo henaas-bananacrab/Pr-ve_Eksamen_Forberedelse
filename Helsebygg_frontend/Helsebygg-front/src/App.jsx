@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import CreateAvvik from './components/CreateAvvik';
 import AvvikDetail from './components/AvvikDetail';
+import Statistics from './components/Statistics';
 import './App.css';
 
 // Protected Route component
@@ -48,6 +49,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AvvikDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/statistics"
+              element={
+                <ProtectedRoute>
+                  <Statistics />
                 </ProtectedRoute>
               }
             />

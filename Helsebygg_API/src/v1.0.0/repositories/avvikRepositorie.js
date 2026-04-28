@@ -30,7 +30,6 @@ const createAvvik = async (avvik) => {
   const {
     Tittel,
     Beskrivelse,
-    Dato,
     Status_Status_id,
     Prioritering_Prioritering_id,
     Kategori_Kategori_id,
@@ -39,13 +38,12 @@ const createAvvik = async (avvik) => {
 
   const [result] = await db.query(`
     INSERT INTO avvik 
-    (Tittel, Beskrivelse, Dato, Status_Status_id,
+    (Tittel, Beskrivelse, Status_Status_id,
      Prioritering_Prioritering_id, Kategori_Kategori_id, Avdeling_Avdeling_id)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?)
   `, [
     Tittel,
     Beskrivelse,
-    Dato,
     Status_Status_id,
     Prioritering_Prioritering_id,
     Kategori_Kategori_id,
@@ -53,14 +51,6 @@ const createAvvik = async (avvik) => {
   ]);
 
   return result.insertId;
-};
-
-const getAvvikByStatus = async (statusId) => {
-  const [rows] = await db.query(`
-    SELECT * FROM avvik WHERE Status_Status_id = ?
-  `, [statusId]);
-
-  return rows;
 };
 
 const updateAvvikStatus = async (id, statusId) => {
@@ -71,30 +61,11 @@ const updateAvvikStatus = async (id, statusId) => {
   return result.affectedRows > 0;
 };
 
-const getAvvikByKategori = async (kategoriId) => {
-  const [rows] = await db.query(`
-    SELECT 
-      a.*,
-      s.Status,
-      p.Prioritering,
-      k.Kategori,
-      av.Avdeling
-    FROM avvik a
-    JOIN status s ON a.Status_Status_id = s.Status_id
-    JOIN prioritering p ON a.Prioritering_Prioritering_id = p.Prioritering_id
-    JOIN Kategori k ON a.Kategori_Kategori_id = k.Kategori_id
-    JOIN avdeling av ON a.Avdeling_Avdeling_id = av.Avdeling_id
-    WHERE a.Kategori_Kategori_id = ?
-  `, [kategoriId]);
-
-  return rows;
-};
-
 const fetchMonthlyAvvik = async () => {
-  const [results] = await db.query(`
+  const [rows] = await db.query(`
     SELECT
       DATE_FORMAT(a.Dato, '%Y-%m') AS month,
-      k.Kategori AS Kategori,
+      k.Kategori AS kategori,
       COUNT(*) AS total
     FROM avvik a
     JOIN kategori k ON a.Kategori_Kategori_id = k.Kategori_id
@@ -106,7 +77,7 @@ const fetchMonthlyAvvik = async () => {
       kategori;
   `);
 
-  return results;
+  return rows;
 };
 
 module.exports = {

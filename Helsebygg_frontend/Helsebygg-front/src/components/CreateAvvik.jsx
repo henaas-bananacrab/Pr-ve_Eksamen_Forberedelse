@@ -6,7 +6,6 @@ const CreateAvvik = () => {
   const [formData, setFormData] = useState({
     Tittel: '',
     Beskrivelse: '',
-    Dato: new Date().toISOString().split('T')[0], // Today's date
     Status_Status_id: 1, // Default status ID
     Prioritering_Prioritering_id: 1, // Default priority ID
     Kategori_Kategori_id: 1, // Default category ID
@@ -70,18 +69,6 @@ const CreateAvvik = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Dato">Date:</label>
-            <input
-              type="date"
-              id="Dato"
-              name="Dato"
-              value={formData.Dato}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
             <label htmlFor="Status_Status_id">Status:</label>
             <select
               id="Status_Status_id"
@@ -95,7 +82,7 @@ const CreateAvvik = () => {
               <option value={3}>Løst</option>
             </select>
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="Prioritering_Prioritering_id">Priority:</label>
             <select

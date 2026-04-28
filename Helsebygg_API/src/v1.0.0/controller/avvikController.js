@@ -30,18 +30,6 @@ const createAvvikHandler = async (req, res) => {
     }
 }
 
-const getAvvikByStatusHandler = async (req, res) => {
-    try {
-        const avvik = await getAvvikByStatus(req.params.id);
-        if (!avvik) {
-            return res.status(404).json({ error: 'Avvik not found' });
-        }
-        res.status(200).json(avvik);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
 const updateAvvikStatusHandler = async (req, res) => {
     const { id } = req.params;
     const { statusId } = req.body;
@@ -51,15 +39,6 @@ const updateAvvikStatusHandler = async (req, res) => {
             return res.status(404).json({ error: 'Avvik not found' });
         }
         res.status(200).json({ message: 'Avvik status updated successfully' });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
-const getAvvikByKategoriHandler = async (req, res) => {
-    try {
-        const avvik = await getAvvikByKategori(req.params.kategoriId);
-        res.status(200).json(avvik);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

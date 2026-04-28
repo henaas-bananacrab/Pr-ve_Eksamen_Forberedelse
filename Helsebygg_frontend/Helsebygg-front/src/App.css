@@ -301,24 +301,25 @@ body {
 }
 
 /* Statistics */
-.statistics {
+.statistics-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.stats-container h2 {
+.statistics-container h2 {
   margin-bottom: 2rem;
   text-align: center;
+  color: var(--text);
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+.statistics-table-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
-.stats-card {
+.month-section {
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
@@ -326,48 +327,66 @@ body {
   border: 1px solid var(--card-border);
 }
 
-.stats-card h3 {
+.month-section h3 {
   margin-bottom: 1rem;
   color: var(--card-text);
-  text-align: center;
+  font-size: 1.2rem;
   border-bottom: 2px solid var(--accent);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
 }
 
-.stats-table {
-  margin-bottom: 1rem;
+.statistics-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.stats-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  padding: 0.5rem 0;
+.statistics-table thead {
+  background-color: var(--input-bg);
+}
+
+.statistics-table thead th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--input-border);
+  color: var(--text);
+}
+
+.statistics-table tbody tr {
   border-bottom: 1px solid var(--input-border);
-  margin-bottom: 0.5rem;
 }
 
-.stats-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--input-border);
+.statistics-table tbody td {
+  padding: 0.75rem;
+  color: var(--text);
 }
 
-.stats-row:last-child {
-  border-bottom: none;
+.statistics-table tbody tr:hover {
+  background-color: var(--input-bg);
 }
 
-.count {
-  font-weight: bold;
+.total-cell {
+  font-weight: 600;
   color: var(--accent);
+  text-align: center;
 }
 
-.stats-total {
+.month-total-row {
+  background-color: var(--input-bg);
+  font-weight: 700;
+  border-top: 2px solid var(--accent);
+}
+
+.month-total-label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.month-total-value {
+  color: var(--accent);
   text-align: center;
-  padding-top: 1rem;
-  border-top: 1px solid var(--input-border);
-  color: var(--card-text);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 /* Responsive */
