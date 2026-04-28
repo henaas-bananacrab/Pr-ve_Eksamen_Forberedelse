@@ -6,9 +6,7 @@ const { createUser, loginUser } = require('../repositories/brukerRepositorie');
 const registerUser = async (req, res) => {
     const { Brukernavn, Passord, Rolle } = req.body;
     try {
-        const hash = await bcrypt.hash(Passord, 10);
-
-        const user = await createUser(Brukernavn, hash, Rolle);
+        const user = await createUser({ Brukernavn, Passord, Rolle });
 
         const token = jwt.sign({ id: user.id, role: user.Rolle }, SECRET_KEY, { expiresIn: '1h' });
 
@@ -23,7 +21,7 @@ const loginUserHandler = async (req, res) => {
     try {
         const user = await loginUser(Brukernavn, Passord);
 
-        if (!user || !await bcrypt.compare(Passord, user.Passord)) {
+        if (!user || !await bcrypt.compare(Passord, user.passord)) {
             return res.status(401).json({ success: false, message: 'Invalid credentials' });
         }
 

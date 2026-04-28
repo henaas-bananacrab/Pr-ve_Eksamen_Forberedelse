@@ -18,6 +18,6 @@ router.post('/avvik', createAvvikHandler);
 router.get('/avvik/status/:id', getAvvikByStatusHandler);
 
 // PUT /avvik/:id/status - Update avvik status
-router.put('/avvik/:id/status', authenticateToken, authorizeRoles('admin'), updateAvvikStatusHandler);
+router.put('/avvik/:id/status', authenticateToken, authorizeRoles('Admin'), updateAvvikStatusHandler);
 
 module.exports = router;

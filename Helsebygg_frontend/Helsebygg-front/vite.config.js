@@ -7,5 +7,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Listen on all network interfaces
     port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://192.168.10.10:4020', // Backend API URL
+        changeOrigin: true,
+      }
+    }
   },
 })

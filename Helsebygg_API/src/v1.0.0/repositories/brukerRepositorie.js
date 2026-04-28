@@ -7,7 +7,7 @@ const createUser = async ({ Brukernavn, Passord, Rolle }) => {
   const hashedPassword = await bcrypt.hash(Passord, SALT_ROUNDS);
 
   const [result] = await db.query(`
-    INSERT INTO bruker (Brukernavn, Passord, Rolle)
+    INSERT INTO bruker (Brukernavn, passord, Rolle)
     VALUES (?, ?, ?)
   `, [Brukernavn, hashedPassword, Rolle]);
 
@@ -23,7 +23,7 @@ const loginUser = async (Brukernavn, Passord) => {
   const user = rows[0];
   if (!user) return null;
 
-  const isMatch = await bcrypt.compare(Passord, user.Passord);
+  const isMatch = await bcrypt.compare(Passord, user.passord);
   if (!isMatch) return null;
 
   return user;

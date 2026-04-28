@@ -3,6 +3,32 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { avvikAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 
+const statusLabels = {
+  1: 'sent',
+  2: 'aktiv',
+  3: 'løst'
+};
+
+const priorityLabels = {
+  1: 'lav',
+  2: 'middels',
+  3: 'høy'
+};
+
+const categoryLabels = {
+  1: 'Pasient problemer',
+  2: 'Utstyrsproblemer',
+  3: 'Forespørsel om nytt utstyr'
+};
+
+const departmentLabels = {
+  1: 'etarse 1',
+  2: 'etarse 2',
+  3: 'etarse 3',
+  4: 'etarse 4',
+  5: 'etarse 5'
+};
+
 const AvvikDetail = () => {
   const [avvik, setAvvik] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -77,16 +103,16 @@ const AvvikDetail = () => {
               <strong>Date:</strong> {new Date(avvik.Dato).toLocaleDateString()}
             </div>
             <div className="detail-item">
-              <strong>Status:</strong> {avvik.Status || 'Unknown'}
+              <strong>Status:</strong> {avvik.Status || statusLabels[avvik.Status_Status_id] || 'Unknown'}
             </div>
             <div className="detail-item">
-              <strong>Priority:</strong> {avvik.Prioritering || 'Unknown'}
+              <strong>Priority:</strong> {avvik.Prioritering || priorityLabels[avvik.Prioritering_Prioritering_id] || 'Unknown'}
             </div>
             <div className="detail-item">
-              <strong>Category:</strong> {avvik.Kategori || 'Unknown'}
+              <strong>Category:</strong> {avvik.Kategori || categoryLabels[avvik.Kategori_Kategori_id] || 'Unknown'}
             </div>
             <div className="detail-item">
-              <strong>Department:</strong> {avvik.Avdeling || 'Unknown'}
+              <strong>Department:</strong> {avvik.Avdeling || departmentLabels[avvik.Avdeling_Avdeling_id] || 'Unknown'}
             </div>
           </div>
         </div>
@@ -97,14 +123,14 @@ const AvvikDetail = () => {
             <h2>Update Status</h2>
             <div className="status-update">
               <select
-                onChange={(e) => handleStatusUpdate(e.target.value)}
+                value={avvik.Status_Status_id || ''}
+                onChange={(e) => handleStatusUpdate(Number(e.target.value))}
                 disabled={updatingStatus}
-                defaultValue=""
               >
                 <option value="" disabled>Select new status</option>
                 <option value={1}>Open</option>
-                <option value={2}>In Progress</option>
-                <option value={3}>Closed</option>
+                <option value={2}>Aktiv</option>
+                <option value={3}>Løst</option>
               </select>
               {updatingStatus && <span>Updating...</span>}
             </div>

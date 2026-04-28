@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://192.168.10.10:4020/api/v1';
+const API_BASE_URL = '/api/v1'; // Vite proxy will forward to http://192.168.10.10:4020/api/v1
 
 const api = axios.create({
   baseURL: API_BASE_URL,

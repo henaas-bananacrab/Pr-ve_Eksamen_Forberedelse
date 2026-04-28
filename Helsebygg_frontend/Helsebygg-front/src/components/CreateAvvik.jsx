@@ -88,10 +88,11 @@ const CreateAvvik = () => {
               name="Status_Status_id"
               value={formData.Status_Status_id}
               onChange={handleChange}
+              defaultValue={1}
             >
-              <option value={1}>Open</option>
-              <option value={2}>In Progress</option>
-              <option value={3}>Closed</option>
+              <option value={1}>Sent</option>
+              <option value={2}>Aktiv</option>
+              <option value={3}>Løst</option>
             </select>
           </div>
 
@@ -102,10 +103,11 @@ const CreateAvvik = () => {
               name="Prioritering_Prioritering_id"
               value={formData.Prioritering_Prioritering_id}
               onChange={handleChange}
+              defaultValue={1}
             >
-              <option value={1}>Low</option>
-              <option value={2}>Medium</option>
-              <option value={3}>High</option>
+              <option value={1}>lav</option>
+              <option value={2}>middels</option>
+              <option value={3}>høy</option>
             </select>
           </div>
 
@@ -116,10 +118,11 @@ const CreateAvvik = () => {
               name="Kategori_Kategori_id"
               value={formData.Kategori_Kategori_id}
               onChange={handleChange}
+              defaultValue={1}
             >
-              <option value={1}>Technical</option>
-              <option value={2}>Safety</option>
-              <option value={3}>Maintenance</option>
+              <option value={1}>Pasient problemer</option>
+              <option value={2}>Utstyrsproblemer</option>
+              <option value={3}>Forespørsel om nytt utstyr</option>
             </select>
           </div>
 
@@ -130,10 +133,13 @@ const CreateAvvik = () => {
               name="Avdeling_Avdeling_id"
               value={formData.Avdeling_Avdeling_id}
               onChange={handleChange}
+              defaultValue={1}
             >
-              <option value={1}>General</option>
-              <option value={2}>Emergency</option>
-              <option value={3}>Surgery</option>
+              <option value={1}>etarse 1</option>
+              <option value={2}>etarse 2</option>
+              <option value={3}>etarse 3</option>
+              <option value={4}>etarse 4</option>
+              <option value={5}>etarse 5</option>
             </select>
           </div>
 
