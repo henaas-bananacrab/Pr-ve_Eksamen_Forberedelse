@@ -147,7 +147,7 @@ Bruker CSS-klasser:
 ## 4. API-Integrasjon
 
 ### Endpoint
-- **Route**: `GET /avvik/stats-by-kategori-month`
+- **Route**: `GET /avvik/stats/monthly`
 - **Controller**: `getMonthlyAvvik()` i `avvikController.js`
 - **Repository**: `fetchMonthlyAvvik()` i `avvikRepositorie.js`
 
